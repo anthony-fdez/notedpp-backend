@@ -1,3 +1,4 @@
+import { logger } from "./../../../logger/logger";
 import { ErrorHandler } from "../../../utils/helpers/errorHandler";
 import { Response, Request } from "express";
 import catchAsync from "../../../utils/middleware/catchAsync";
@@ -18,6 +19,12 @@ export const registerUserController = catchAsync(
         firstName,
         lastName,
       },
+    });
+
+    logger.log({
+      message: "User Created",
+      level: "info",
+      user: user,
     });
 
     res.status(200).json({ user });

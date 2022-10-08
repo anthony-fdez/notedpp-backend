@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { logger } from "./logger/logger";
 import app from "./app";
 
@@ -23,7 +22,7 @@ export const server = app.listen(PORT, async () => {
   process.on("unhandledRejection", (err: Error) => {
     logger.log({
       level: "error",
-      message: `server shutting down due to unhandled rejection: ${err.stack}`,
+      message: `Server shutting down due to unhandled rejection`,
       error: err,
       service: "server",
     });
