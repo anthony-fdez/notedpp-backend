@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { logger } from "./logger/logger";
 import app from "./app";
-import { PrismaClient } from "@prisma/client";
+
+import { prisma } from "../prisma/prisma-client";
 
 const PORT = process.env.PORT || 3001;
-export const prisma = new PrismaClient();
 
 export const server = app.listen(PORT, async () => {
   try {

@@ -6,14 +6,14 @@ import cors from "cors";
 
 // Routers
 import UserRoutes from "./Controllers/Users/UsersRoutes";
-import error from "./utils/middlewares/errors";
+import error from "./utils/middleware/errors";
 
 const app = express();
 
 app.use(cors());
-
 app.use(urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(UserRoutes);
 app.use(error);
 
