@@ -1,4 +1,4 @@
-import { emailUniqueness } from './../../../services/checkEmailUnique';
+import { emailUniqueness } from "./../../../services/checkEmailUnique";
 import { logger } from "./../../../logger/logger";
 import { ErrorHandler } from "../../../utils/helpers/errorHandler";
 import { Response, Request } from "express";
@@ -10,7 +10,7 @@ export const registerUserController = catchAsync(
     const { firstName, lastName, password, email } = req.body;
 
     if (!firstName || !lastName || !password || !email) {
-      throw new ErrorHandler("Missing fields", 401);
+      throw new ErrorHandler(401, "Missing fields");
     }
 
     await emailUniqueness(email);
@@ -23,7 +23,7 @@ export const registerUserController = catchAsync(
         lastName,
       },
     });
-    
+
     logger.log({
       message: "User Created",
       level: "info",
