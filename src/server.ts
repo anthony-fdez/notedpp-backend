@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { logger } from "./logger/logger";
 import app from "./app";
-import { PrismaClient } from "@prisma/client";
+
+import { prisma } from "../prisma/prisma-client";
 
 const PORT = process.env.PORT || 3001;
-export const prisma = new PrismaClient();
 
 export const server = app.listen(PORT, async () => {
   try {
@@ -23,7 +22,7 @@ export const server = app.listen(PORT, async () => {
   process.on("unhandledRejection", (err: Error) => {
     logger.log({
       level: "error",
-      message: `server shutting down due to unhandled rejection: ${err.stack}`,
+      message: `Server shutting down due to unhandled rejection`,
       error: err,
       service: "server",
     });
