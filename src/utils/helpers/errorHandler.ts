@@ -1,7 +1,7 @@
 export class ErrorHandler extends Error {
   private _statusCode: number;
 
-  constructor(message: string, statusCode: number) {
+  constructor(statusCode: number, message: string) {
     super(message);
     this._statusCode = statusCode;
   }
