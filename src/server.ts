@@ -1,18 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { logger } from "./logger/logger";
 import app from "./app";
-import { dbConnection } from "./dbConnection/dbConnection";
+import { PrismaClient } from "@prisma/client";
 
 const PORT = process.env.PORT || 3001;
+const prisma = new PrismaClient();
 
 export const server = app.listen(PORT, async () => {
   try {
-    dbConnection();
+    await prisma.$connect();
+
     console.log(`PORT: ${PORT}`);
   } catch (error: any) {
     logger.log({
       level: "error",
-      message: `Unable to connect with db: ${error.stack}`,
+      message: `Unable to connect with db`,
       error,
       service: "server",
     });
