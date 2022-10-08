@@ -4,7 +4,7 @@ import app from "./app";
 import { PrismaClient } from "@prisma/client";
 
 const PORT = process.env.PORT || 3001;
-const prisma = new PrismaClient();
+export const prisma = new PrismaClient();
 
 export const server = app.listen(PORT, async () => {
   try {
@@ -28,7 +28,8 @@ export const server = app.listen(PORT, async () => {
       service: "server",
     });
 
-    server.close(() => {
+    server.close(async () => {
+      await prisma.$disconnect();
       process.exit(1);
     });
   });
