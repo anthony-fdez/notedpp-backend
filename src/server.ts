@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3001;
 export const server = app.listen(PORT, async () => {
   try {
     dbConnection();
+    console.log(`PORT: ${PORT}`);
   } catch (error: any) {
     logger.log({
       level: "error",

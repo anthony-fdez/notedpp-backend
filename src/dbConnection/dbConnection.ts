@@ -9,15 +9,15 @@ export const dbConnection = () => {
       useUnifiedTopology: true,
     })
     .then(() => {
-      console.log("Connected to db");
+      logger.log({
+        level: "info",
+        message: "Connected with db",
+      });
     })
     .catch((e: any) => {
-      console.log("Error connecting with db");
-      console.log(e);
-
       logger.log({
         level: "error",
-        message: `Unable to connect with db: ${e.stack}`,
+        message: `Unable to connect with db`,
         e,
         service: "server",
       });
