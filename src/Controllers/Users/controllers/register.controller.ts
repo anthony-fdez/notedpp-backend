@@ -1,3 +1,4 @@
+import { emailUniqueness } from './../../../services/checkEmailUnique';
 import { logger } from "./../../../logger/logger";
 import { ErrorHandler } from "../../../utils/helpers/errorHandler";
 import { Response, Request } from "express";
@@ -12,6 +13,8 @@ export const registerUserController = catchAsync(
       throw new ErrorHandler("Missing fields", 401);
     }
 
+    await emailUniqueness(email);
+
     const user = await prisma.user.create({
       data: {
         email,
@@ -20,7 +23,7 @@ export const registerUserController = catchAsync(
         lastName,
       },
     });
-
+    
     logger.log({
       message: "User Created",
       level: "info",
