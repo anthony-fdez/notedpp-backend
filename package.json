@@ -2,9 +2,13 @@
   "name": "notes-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --detectOpenHandles --updateSnapshot --verbose --forceExit --coverage",
+    "build": "tsc",
+    "dev-start": "ts-node-dev --respawn src/server.ts",
+    "dev": "ts-node src/server.ts",
+    "prod": "env-cmd -f .env.production ts-node src/server.ts"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
