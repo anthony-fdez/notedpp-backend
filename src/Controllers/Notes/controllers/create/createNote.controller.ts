@@ -1,8 +1,10 @@
-import { createNote } from "./../../utils/services/create/createNote";
-import { createFolderAndNote } from "../../utils/services/create/createFolderAndNote";
-import { getFolder } from "../../utils/services/read/getFolder";
 import { Request, Response } from "express";
 import catchAsync from "../../../../utils/middleware/catchAsync";
+import {
+  createFolderAndNote,
+  createNote,
+  getFolder,
+} from "../../utils/services/notes.services";
 
 export const newNoteController = catchAsync(
   async (req: Request, res: Response) => {
