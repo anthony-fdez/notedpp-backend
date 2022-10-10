@@ -11,9 +11,10 @@ datasource db {
 }
 
 model Folder {
-  id         String @id @default(auto()) @map("_id") @db.ObjectId
-  notes      Note[]
-  user_email String @unique
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  notes       Note[]
+  folder_name String @unique
+  user_email  String @unique
 }
 
 model Note {
@@ -23,5 +24,6 @@ model Note {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Folder    Folder   @relation(fields: [user_email], references: [user_email])
+  folderId  String   @db.ObjectId
+  folder    Folder   @relation(fields: [folderId], references: [id])
 }

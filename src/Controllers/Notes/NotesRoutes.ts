@@ -1,4 +1,5 @@
-import { newNoteController } from "./controllers/newNote.controller";
+import { getFoldersController } from "./controllers/get/getFolders.controller";
+import { newNoteController } from "./controllers/create/createNote.controller";
 import { checkJWT } from "../../utils/middleware/checkJWT";
 
 import express from "express";
@@ -6,5 +7,6 @@ import express from "express";
 const NotesRoutes = express.Router();
 
 NotesRoutes.route("/notes/new").post(checkJWT, newNoteController);
+NotesRoutes.route("/notes/getFolders").get(checkJWT, getFoldersController);
 
 export default NotesRoutes;
