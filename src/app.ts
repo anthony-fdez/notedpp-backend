@@ -1,3 +1,4 @@
+import { checkJWT } from "./utils/middleware/checkJWT";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 require("dotenv").config();
 
