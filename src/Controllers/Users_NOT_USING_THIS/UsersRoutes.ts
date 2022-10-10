@@ -1,4 +1,4 @@
-import { checkJWT } from "./../../utils/middleware/checkJWT";
+import { checkJWT } from "../../utils/middleware/checkJWT";
 import { loginUserController } from "./controllers/login.controller";
 import { registerUserController } from "./controllers/register.controller";
 import express from "express";

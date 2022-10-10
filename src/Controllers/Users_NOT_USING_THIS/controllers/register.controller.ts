@@ -1,5 +1,5 @@
-import { emailUniqueness } from "./../../../services/checkEmailUnique";
-import { logger } from "./../../../logger/logger";
+import { emailUniqueness } from "../../../services/checkEmailUnique";
+import { logger } from "../../../logger/logger";
 import { ErrorHandler } from "../../../utils/helpers/errorHandler";
 import { Response, Request } from "express";
 import catchAsync from "../../../utils/middleware/catchAsync";
