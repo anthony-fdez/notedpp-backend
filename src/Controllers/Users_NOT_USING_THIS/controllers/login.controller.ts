@@ -1,3 +1,4 @@
+import { checkJWT } from "../../../utils/middleware/checkJWT";
 import { Request, Response } from "express";
 import catchAsync from "../../../utils/middleware/catchAsync";
 
