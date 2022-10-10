@@ -1,4 +1,4 @@
-import { getFoldersController } from "./controllers/get/getFolders.controller";
+import { getFoldersController } from "./controllers/read/getFolders.controller";
 import { newNoteController } from "./controllers/create/createNote.controller";
 import { checkJWT } from "../../utils/middleware/checkJWT";
 
