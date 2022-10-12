@@ -1,15 +1,16 @@
+import { Folder } from "@prisma/client";
 import { prisma } from "../../../../../../prisma/prisma-client";
 
 interface Props {
   folder_name: string;
 }
 
-export const getFolder = async ({ folder_name }: Props) => {
-  const folder = await prisma.folder.findUnique({
+export const getFolder = async ({ folder_name }: Props): Promise<Folder> => {
+  const folder: Folder = (await prisma.folder.findUnique({
     where: {
       folder_name,
     },
-  });
+  })) as Folder;
 
   return folder;
 };

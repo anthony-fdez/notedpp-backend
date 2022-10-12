@@ -13,7 +13,7 @@ export const createFolderAndNote = async ({
   user_email,
   note,
   res,
-}: Props) => {
+}: Props): Promise<Response> => {
   const folder = await prisma.folder.create({
     data: {
       folder_name,

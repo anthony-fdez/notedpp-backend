@@ -13,7 +13,7 @@ export const createNote = async ({
   user_email,
   note,
   res,
-}: Props) => {
+}: Props): Promise<Response> => {
   const newNote = await prisma.note.create({
     data: {
       user_email: user_email,
