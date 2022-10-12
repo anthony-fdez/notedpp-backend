@@ -9,3 +9,20 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model Folder {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  notes       Note[]
+  folder_name String @unique
+  user_id     String @unique
+}
+
+model Note {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  user_id   String   @unique
+  note      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  folderId  String   @db.ObjectId
+  folder    Folder   @relation(fields: [folderId], references: [id])
+}
