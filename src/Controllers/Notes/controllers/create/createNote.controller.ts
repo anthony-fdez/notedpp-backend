@@ -10,12 +10,22 @@ import {
 const router: Router = express.Router();
 
 export const createNewNoteController = router.post(
-  "/new",
+  "/new-note",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
-    const { folder_name, user_email, note } = req.body;
+    let user_id = req.auth?.payload.sub;
 
-    if (!user_email || !note) {
+    const { folder_name, note, test_user_id } = req.body;
+    if (test_user_id) user_id = test_user_id;
+
+    if (!user_id) {
+      return res.status(401).json({
+        status: "error",
+        message: "Unauthorized",
+      });
+    }
+
+    if (!note) {
       return res.status(400).json({
         status: "error",
         message: "Missing fields",
@@ -29,12 +39,12 @@ export const createNewNoteController = router.post(
         return await createFolderAndNote({
           folder_name: "Quick Notes",
           note,
-          user_email,
+          user_id,
           res,
         });
       } else {
         return await createNote({
-          user_email,
+          user_id,
           note,
           folderId: quickNotesFolder.id,
           res,
@@ -47,14 +57,14 @@ export const createNewNoteController = router.post(
     if (!folderExist) {
       return await createFolderAndNote({
         folder_name,
-        user_email,
+        user_id,
         note,
         res,
       });
     }
 
     return await createNote({
-      user_email,
+      user_id,
       note,
       folderId: folderExist.id,
       res,

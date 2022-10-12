@@ -3,27 +3,27 @@ import { prisma } from "../../../../../../prisma/prisma-client";
 
 interface Props {
   folder_name: string;
-  user_email: string;
+  user_id: string;
   note: string;
   res: Response;
 }
 
 export const createFolderAndNote = async ({
   folder_name,
-  user_email,
+  user_id,
   note,
   res,
 }: Props): Promise<Response> => {
   const folder = await prisma.folder.create({
     data: {
       folder_name,
-      user_email,
+      user_id,
     },
   });
 
   const newNote = await prisma.note.create({
     data: {
-      user_email,
+      user_id,
       note,
       folderId: folder.id,
     },

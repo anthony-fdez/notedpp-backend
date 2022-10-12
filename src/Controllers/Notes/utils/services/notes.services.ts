@@ -4,6 +4,7 @@ import { createFolderAndNote } from "./create/createFolderAndNote.service";
 import { getFolder } from "./read/getFolder.service";
 import { getAllFolders } from "./read/getAllFolders.service";
 import { deleteNote } from "./delete/deleteNote.service";
+import { deleteAllNotesInFolder } from "./delete/deleteAllNotesInFolder.service";
 
 export {
   createNote,
@@ -12,4 +13,5 @@ export {
   getAllFolders,
   deleteNote,
   createFolder,
+  deleteAllNotesInFolder,
 };

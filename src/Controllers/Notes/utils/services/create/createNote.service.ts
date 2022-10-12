@@ -3,20 +3,20 @@ import { prisma } from "../../../../../../prisma/prisma-client";
 
 interface Props {
   folderId: string;
-  user_email: string;
+  user_id: string;
   note: string;
   res: Response;
 }
 
 export const createNote = async ({
   folderId,
-  user_email,
+  user_id,
   note,
   res,
 }: Props): Promise<Response> => {
   const newNote = await prisma.note.create({
     data: {
-      user_email: user_email,
+      user_id,
       note: note,
       folderId,
     },

@@ -9,16 +9,20 @@ export const getAllFoldersController = router.get(
   "/get-all-folders",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
-    const { user_email } = req.body;
+    let user_id = req.auth?.payload.sub;
 
-    if (!user_email) {
-      return res.status(400).send({
+    const { test_user_id } = req.body;
+
+    if (test_user_id) user_id = test_user_id;
+
+    if (!user_id) {
+      return res.status(401).json({
         status: "error",
-        message: "User email is required",
+        message: "Unauthorized",
       });
     }
 
-    const folders = await getAllFolders({ user_email });
+    const folders = await getAllFolders({ user_id });
 
     return res.status(200).json({ folders: folders });
   })

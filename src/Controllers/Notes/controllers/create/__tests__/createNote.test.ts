@@ -5,45 +5,42 @@ import app from "../../../../../app";
 jest.setTimeout(30000);
 const request = supertest(app);
 
+interface IRes {
+  statusCode: number;
+  body: {
+    status: string;
+    note: Note;
+  };
+}
+
 describe("New note", () => {
+  const test_user_id = "user";
+  const folder_name = "TEST";
+  const note = "TEST NOTE";
   let newlyCreatedNoteId: string;
 
   test("Should create a new note", async () => {
-    interface IRes {
-      statusCode: number;
-      body: {
-        status: string;
-        note: Note;
-      };
-    }
-
-    const res: IRes = (await request.post("/notes/new").send({
-      folder_name: "TEST",
-      user_email: "test@test.test",
-      note: "TEST NOTE",
+    const res: IRes = (await request.post("/notes/new-note").send({
+      folder_name,
+      test_user_id,
+      note,
     })) as unknown as IRes;
 
     const { statusCode, body } = res;
 
+    console.log(res);
+
     newlyCreatedNoteId = body.note.id;
 
     expect(statusCode).toBe(200);
-    expect(body.note.note).toBe("TEST NOTE");
-    expect(body.note.user_email).toBe("test@test.test");
+    expect(body.note.note).toBe(note);
+    expect(body.note.user_id).toBe(test_user_id);
   });
 
   test("Should fail to create a new note", async () => {
-    interface IRes {
-      statusCode: number;
-      body: {
-        status: string;
-        note: Note;
-      };
-    }
-
-    const res: IRes = (await request.post("/notes/new").send({
-      folder_name: "TEST",
-      note: "TEST NOTE",
+    const res: IRes = (await request.post("/notes/new-note").send({
+      folder_name,
+      test_user_id,
     })) as unknown as IRes;
 
     const { statusCode, body } = res;
@@ -53,14 +50,6 @@ describe("New note", () => {
   });
 
   test("Delete Note", async () => {
-    interface IRes {
-      statusCode: number;
-      body: {
-        status: string;
-        note: Note;
-      };
-    }
-
     const res: IRes = (await request.delete("/notes/delete-note").send({
       note_id: newlyCreatedNoteId,
     })) as unknown as IRes;
@@ -68,8 +57,8 @@ describe("New note", () => {
     const { statusCode, body } = res;
 
     expect(statusCode).toBe(200);
-    expect(body.note.note).toBe("TEST NOTE");
-    expect(body.note.user_email).toBe("test@test.test");
+    expect(body.note.note).toBe(note);
+    expect(body.note.user_id).toBe(test_user_id);
     expect(body.note.id).toBe(newlyCreatedNoteId);
   });
 });

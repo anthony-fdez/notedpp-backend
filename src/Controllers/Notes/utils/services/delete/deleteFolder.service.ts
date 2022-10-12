@@ -3,11 +3,15 @@ import { prisma } from "../../../../../../prisma/prisma-client";
 
 interface Props {
   folder_id: string;
+  deletedNotesCount: {
+    count: number;
+  };
   res: Response;
 }
 
 export const deleteFolder = async ({
   folder_id,
+  deletedNotesCount,
   res,
 }: Props): Promise<Response> => {
   try {
@@ -19,8 +23,9 @@ export const deleteFolder = async ({
 
     return res.status(200).send({
       status: "OK",
-      note: deletedFolder,
+      folder: deletedFolder,
       message: "Folder deleted successfully",
+      notesDeleted: deletedNotesCount,
     });
   } catch (error: unknown) {
     return res.status(400).send({
