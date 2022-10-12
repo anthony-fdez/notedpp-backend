@@ -14,7 +14,7 @@ interface IRes {
 }
 
 describe("New note", () => {
-  const test_user_id = "user";
+  const test_user_id = "TEST_USER";
   const folder_name = "TEST";
   const note = "TEST NOTE";
   let newlyCreatedNoteId: string;
@@ -28,13 +28,11 @@ describe("New note", () => {
 
     const { statusCode, body } = res;
 
-    console.log(res);
-
-    newlyCreatedNoteId = body.note.id;
-
     expect(statusCode).toBe(200);
     expect(body.note.note).toBe(note);
     expect(body.note.user_id).toBe(test_user_id);
+
+    newlyCreatedNoteId = body.note.id;
   });
 
   test("Should fail to create a new note", async () => {

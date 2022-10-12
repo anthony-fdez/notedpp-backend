@@ -15,7 +15,7 @@ interface IRes {
 }
 
 describe("Delete Notes", () => {
-  const test_user_id = "user";
+  const test_user_id = "TEST_USER";
   const folder_name = "TEST";
   const note = "NEW NOTE";
   let newlyCreatedNoteId: string;
@@ -29,11 +29,11 @@ describe("Delete Notes", () => {
 
     const { statusCode, body } = res;
 
-    newlyCreatedNoteId = body.note.id;
-
     expect(statusCode).toBe(200);
     expect(body.note.note).toBe(note);
     expect(body.note.user_id).toBe(test_user_id);
+
+    newlyCreatedNoteId = body.note.id;
   });
 
   test("Should delete the note", async () => {

@@ -35,7 +35,7 @@ export const createNewFolderController = router.post(
     if (folder) {
       return res
         .status(400)
-        .json({ status: "error", message: "Folder already exists" });
+        .json({ status: "error", message: "Folder already exists", folder });
     }
 
     await createFolder({ user_id, folder_name, res });
