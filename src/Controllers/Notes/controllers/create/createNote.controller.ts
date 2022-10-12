@@ -1,13 +1,18 @@
-import { Request, Response } from "express";
+import express, { Request, Response, Router } from "express";
 import catchAsync from "../../../../utils/middleware/catchAsync";
+import checkJWT from "../../../../utils/middleware/checkJWT";
 import {
   createFolderAndNote,
   createNote,
   getFolder,
 } from "../../utils/services/notes.services";
 
-export const newNoteController = catchAsync(
-  async (req: Request, res: Response) => {
+const router: Router = express.Router();
+
+export const newNoteController = router.post(
+  "/new",
+  checkJWT,
+  catchAsync(async (req: Request, res: Response) => {
     const { folder_name, user_email, note } = req.body;
 
     if (!user_email || !note) {
@@ -54,5 +59,5 @@ export const newNoteController = catchAsync(
       folderId: folderExist.id,
       res,
     });
-  }
+  })
 );

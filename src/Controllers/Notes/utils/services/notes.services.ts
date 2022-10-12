@@ -1,5 +1,6 @@
-import { createNote } from "./create/createNote";
-import { createFolderAndNote } from "./create/createFolderAndNote";
-import { getFolder } from "./read/getFolder";
+import { createNote } from "./create/createNote.service";
+import { createFolderAndNote } from "./create/createFolderAndNote.service";
+import { getFolder } from "./read/getFolder.service";
+import { getAllFolders } from "./read/getAllFolders.service";
 
-export { createNote, createFolderAndNote, getFolder };
+export { createNote, createFolderAndNote, getFolder, getAllFolders };
