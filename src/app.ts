@@ -1,9 +1,10 @@
-import { checkJWT } from "./utils/middleware/checkJWT";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 require("dotenv").config();
 
 import express, { urlencoded } from "express";
 import cors from "cors";
+
+console.log(process.env.NODE_ENV);
 
 // Routers
 import NotesRoutes from "./Controllers/Notes/NotesRoutes";
