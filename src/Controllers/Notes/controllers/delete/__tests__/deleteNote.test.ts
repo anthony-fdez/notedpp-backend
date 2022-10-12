@@ -41,7 +41,7 @@ describe("Delete Notes", () => {
       };
     }
 
-    const res: IRes = (await request.delete("/notes/delete").send({
+    const res: IRes = (await request.delete("/notes/delete-note").send({
       note_id: newlyCreatedNoteId,
     })) as unknown as IRes;
 

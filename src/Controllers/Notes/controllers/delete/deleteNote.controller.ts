@@ -6,7 +6,7 @@ import { deleteNote } from "../../utils/services/notes.services";
 const router: Router = express.Router();
 
 export const deleteNoteController = router.delete(
-  "/delete",
+  "/delete-note",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
     const { note_id } = req.body;

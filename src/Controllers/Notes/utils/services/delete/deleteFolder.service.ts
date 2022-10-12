@@ -2,30 +2,30 @@ import { Response } from "express";
 import { prisma } from "../../../../../../prisma/prisma-client";
 
 interface Props {
-  note_id: string;
+  folder_id: string;
   res: Response;
 }
 
-export const deleteNote = async ({
-  note_id,
+export const deleteFolder = async ({
+  folder_id,
   res,
 }: Props): Promise<Response> => {
   try {
-    const deletedNote = await prisma.note.delete({
+    const deletedFolder = await prisma.folder.delete({
       where: {
-        id: note_id,
+        id: folder_id,
       },
     });
 
-    return res.status(200).json({
+    return res.status(200).send({
       status: "OK",
-      note: deletedNote,
-      message: "Note deleted successfully",
+      note: deletedFolder,
+      message: "Folder deleted successfully",
     });
   } catch (error: unknown) {
-    return res.status(400).json({
+    return res.status(400).send({
       status: "error",
-      message: "Note does not exist",
+      message: "Folder does not exist",
       error,
     });
   }

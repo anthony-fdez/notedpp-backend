@@ -13,5 +13,6 @@ export const getAllFolders = async ({
       user_email,
     },
   });
+
   return folders;
 };
