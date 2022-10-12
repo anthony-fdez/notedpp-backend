@@ -5,13 +5,13 @@ import app from "../../../../../app";
 jest.setTimeout(30000);
 const request = supertest(app);
 
-describe("New note", () => {
-  test("Should create a new note", async () => {
+describe("Get all folders", () => {
+  test("Should get all folders", async () => {
     interface IRes {
       statusCode: number;
       body: {
         status: string;
-        note: Folder[];
+        folders: Folder[];
       };
     }
 

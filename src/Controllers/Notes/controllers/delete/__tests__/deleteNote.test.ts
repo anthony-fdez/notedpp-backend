@@ -5,8 +5,9 @@ import app from "../../../../../app";
 jest.setTimeout(30000);
 const request = supertest(app);
 
-describe("New note", () => {
+describe("Delete Notes", () => {
   let newlyCreatedNoteId: string;
+
   test("Should create a new note", async () => {
     interface IRes {
       statusCode: number;
@@ -31,7 +32,7 @@ describe("New note", () => {
     expect(body.note.user_email).toBe("test@test.test");
   });
 
-  test("Delete Note", async () => {
+  test("Should delete the note", async () => {
     interface IRes {
       statusCode: number;
       body: {

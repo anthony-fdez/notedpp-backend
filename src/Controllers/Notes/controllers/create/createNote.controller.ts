@@ -9,7 +9,7 @@ import {
 
 const router: Router = express.Router();
 
-export const newNoteController = router.post(
+export const createNewNoteController = router.post(
   "/new",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
