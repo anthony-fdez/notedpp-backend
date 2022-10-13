@@ -1,4 +1,3 @@
-import { Note } from "@prisma/client";
 import { prisma } from "../../../../../../prisma/prisma-client";
 
 interface Props {

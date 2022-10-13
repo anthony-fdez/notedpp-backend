@@ -6,12 +6,16 @@ interface Props {
   deletedNotesCount: {
     count: number;
   };
+  deletedNotesHistoryCount: {
+    count: number;
+  };
   res: Response;
 }
 
 export const deleteFolder = async ({
   folder_id,
   deletedNotesCount,
+  deletedNotesHistoryCount,
   res,
 }: Props): Promise<Response> => {
   try {
@@ -26,6 +30,7 @@ export const deleteFolder = async ({
       folder: deletedFolder,
       message: "Folder deleted successfully",
       notesDeleted: deletedNotesCount,
+      historyNotesDeleted: deletedNotesHistoryCount,
     });
   } catch (error: unknown) {
     return res.status(400).send({

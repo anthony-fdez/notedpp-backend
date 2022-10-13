@@ -12,6 +12,7 @@ import { deleteFolder } from "./delete/deleteFolder.service";
 import { deleteAllFolders } from "./delete/deleteAllFolders.service";
 import { getNote } from "./read/getNote.service";
 import { createNoteArchive } from "./create/createNoteArchive.service";
+import { deleteNoteHistory } from "./delete/deleteNoteHistory.service";
 
 export {
   // Create
@@ -24,6 +25,7 @@ export {
   deleteFolder,
   deleteNote,
   deleteAllFolders,
+  deleteNoteHistory,
   // Read
   getAllFolders,
   getFolderByName,
