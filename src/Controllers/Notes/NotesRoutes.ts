@@ -10,6 +10,7 @@ import { getNotesInFolderController } from "./controllers/read/getNotesInFolder.
 import { renameFolderController } from "./controllers/update/renameFolder.controller";
 import { editNoteController } from "./controllers/update/editNote.controller";
 import { deleteNoteHistoryController } from "./controllers/delete/deleteNoteHistory.controller";
+import { getNoteHistoryController } from "./controllers/read/getNoteHistory.controller";
 
 const NotesRoutes = express.Router();
 
@@ -23,5 +24,6 @@ NotesRoutes.use("/notes", getNotesInFolderController);
 NotesRoutes.use("/notes", renameFolderController);
 NotesRoutes.use("/notes", editNoteController);
 NotesRoutes.use("/notes", deleteNoteHistoryController);
+NotesRoutes.use("/notes", getNoteHistoryController);
 
 export default NotesRoutes;
