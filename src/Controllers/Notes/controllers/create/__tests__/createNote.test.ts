@@ -18,7 +18,6 @@ describe("New note", () => {
   const folder_name = "TEST";
   const note = "TEST NOTE";
   let newlyCreatedNoteId: string;
-
   test("Should create a new note", async () => {
     const res: IRes = (await request.post("/notes/new-note").send({
       folder_name,
