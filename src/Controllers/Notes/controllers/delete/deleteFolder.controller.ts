@@ -21,7 +21,7 @@ export const deleteFolderController = router.delete(
       });
     }
 
-    let new_folder_id = "";
+    let new_folder_id = folder_id;
 
     if (folder_name) {
       const folder: Folder = await getFolderByName({ folder_name });
