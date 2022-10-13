@@ -20,10 +20,9 @@
     "jsonwebtoken": "^8.5.1",
     "lint-staged": "^13.0.3",
     "moment": "^2.29.3",
-    "mongoose": "^6.6.5",
     "random-email": "^1.0.3",
     "validator": "^13.7.0",
-    "winston": "^3.7.2"
+    "winston": "^3.8.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

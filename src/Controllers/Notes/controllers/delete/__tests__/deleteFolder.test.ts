@@ -50,9 +50,7 @@ describe("Delete Folder", () => {
       test_user_id,
     })) as unknown as IRes;
 
-    const { statusCode, body } = res;
-
-    console.log(body);
+    const { statusCode } = res;
 
     expect(statusCode).toBe(400);
   });

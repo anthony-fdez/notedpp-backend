@@ -1,13 +1,13 @@
 import { prisma } from "../../../../../../prisma/prisma-client";
 
 interface Props {
-  folder_id: string;
+  user_id: string;
 }
 
-export const deleteAllNotesInFolder = async ({ folder_id }: Props) => {
+export const deleteAllNotes = async ({ user_id }: Props) => {
   const deletedNotes = await prisma.note.deleteMany({
     where: {
-      folderId: folder_id,
+      user_id,
     },
   });
 

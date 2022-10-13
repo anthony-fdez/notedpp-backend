@@ -56,6 +56,6 @@ describe("Delete Notes", () => {
 
     const { statusCode } = res;
 
-    expect(statusCode).toBe(400);
+    expect(statusCode).toBe(500);
   });
 });

@@ -11,18 +11,32 @@ datasource db {
 }
 
 model Folder {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   notes       Note[]
-  folder_name String @unique
-  user_id     String @unique
+  folder_name String   @unique
+  user_id     String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Note {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  user_id   String   @unique
-  note      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  folderId  String   @db.ObjectId
-  folder    Folder   @relation(fields: [folderId], references: [id])
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  user_id       String        @unique
+  note          String
+  folderId      String        @db.ObjectId
+  folder        Folder        @relation(fields: [folderId], references: [id])
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  notes_history NoteHistory[]
+}
+
+model NoteHistory {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  note_archive_text String
+  user_id           String   @unique
+  note_id           String   @unique
+  folderId          String   @db.ObjectId
+  note              Note     @relation(fields: [note_id], references: [id])
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }

@@ -24,9 +24,7 @@ describe("New Folder", () => {
       test_user_id,
     })) as unknown as IRes;
 
-    const { statusCode, body } = res;
-
-    console.log(body);
+    const { statusCode } = res;
 
     try {
       expect(statusCode).toBe(200);
