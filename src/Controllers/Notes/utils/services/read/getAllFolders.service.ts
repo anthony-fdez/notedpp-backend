@@ -10,6 +10,9 @@ export const getAllFolders = async ({ user_id }: Props): Promise<Folder[]> => {
     where: {
       user_id,
     },
+    include: {
+      _count: true,
+    },
   });
 
   return folders;

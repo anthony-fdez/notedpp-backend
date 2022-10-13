@@ -10,9 +10,7 @@ export const getAllFoldersController = router.get(
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
     let user_id = req.auth?.payload.sub;
-
     const { test_user_id } = req.body;
-
     if (test_user_id) user_id = test_user_id;
 
     if (!user_id) {
