@@ -1,10 +1,10 @@
-import { getFolder } from "./../../utils/services/read/getFolder.service";
 import { createFolder } from "./../../utils/services/create/createFolder.service";
 // Just create an empty folder
 
 import express, { Request, Response, Router } from "express";
 import catchAsync from "../../../../utils/middleware/catchAsync";
 import checkJWT from "../../../../utils/middleware/checkJWT";
+import { getFolderByName } from "../../utils/services/notes.services";
 
 const router: Router = express.Router();
 
@@ -30,7 +30,7 @@ export const createNewFolderController = router.post(
         .json({ status: "error", message: "Missing fields" });
     }
 
-    const folder = await getFolder({ folder_name });
+    const folder = await getFolderByName({ folder_name });
 
     if (folder) {
       return res

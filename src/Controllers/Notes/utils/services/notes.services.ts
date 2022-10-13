@@ -1,17 +1,22 @@
 import { createFolder } from "./create/createFolder.service";
 import { createNote } from "./create/createNote.service";
 import { createFolderAndNote } from "./create/createFolderAndNote.service";
-import { getFolder } from "./read/getFolder.service";
+import { getFolderByName } from "./read/getFolderByName.service";
 import { getAllFolders } from "./read/getAllFolders.service";
 import { deleteNote } from "./delete/deleteNote.service";
 import { deleteAllNotesInFolder } from "./delete/deleteAllNotesInFolder.service";
+import { deleteFolder } from "./delete/deleteFolder.service";
 
 export {
+  // Create
+  createFolder,
   createNote,
   createFolderAndNote,
-  getFolder,
-  getAllFolders,
-  deleteNote,
-  createFolder,
+  // Delete
   deleteAllNotesInFolder,
+  deleteFolder,
+  deleteNote,
+  // Read
+  getAllFolders,
+  getFolderByName,
 };

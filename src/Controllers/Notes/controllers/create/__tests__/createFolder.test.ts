@@ -15,7 +15,7 @@ interface IRes {
 
 describe("New Folder", () => {
   const test_user_id = "TEST_USER";
-  const folder_name = "TEST";
+  const folder_name = "create_folder_test";
   let createdFolderId: string;
 
   test("Should delete folder if exists", async () => {
@@ -24,7 +24,9 @@ describe("New Folder", () => {
       test_user_id,
     })) as unknown as IRes;
 
-    const { statusCode } = res;
+    const { statusCode, body } = res;
+
+    console.log(body);
 
     try {
       expect(statusCode).toBe(200);

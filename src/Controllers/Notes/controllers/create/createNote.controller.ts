@@ -4,7 +4,7 @@ import checkJWT from "../../../../utils/middleware/checkJWT";
 import {
   createFolderAndNote,
   createNote,
-  getFolder,
+  getFolderByName,
 } from "../../utils/services/notes.services";
 
 const router: Router = express.Router();
@@ -33,7 +33,9 @@ export const createNewNoteController = router.post(
     }
 
     if (!folder_name) {
-      const quickNotesFolder = await getFolder({ folder_name: "Quick Notes" });
+      const quickNotesFolder = await getFolderByName({
+        folder_name: "Quick Notes",
+      });
 
       if (!quickNotesFolder) {
         return await createFolderAndNote({
@@ -52,7 +54,7 @@ export const createNewNoteController = router.post(
       }
     }
 
-    const folderExist = await getFolder({ folder_name });
+    const folderExist = await getFolderByName({ folder_name });
 
     if (!folderExist) {
       return await createFolderAndNote({
