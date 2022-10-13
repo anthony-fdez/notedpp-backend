@@ -25,7 +25,7 @@ export const server = app.listen(PORT, async () => {
   process.on("unhandledRejection", (err: Error) => {
     logger.log({
       level: "error",
-      message: `Server shutting down due to unhandled rejection`,
+      message: "Server shutting down due to unhandled rejection",
       error: err,
       service: "server",
     });
