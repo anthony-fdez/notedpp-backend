@@ -52,8 +52,6 @@ describe("Delete Folder", () => {
 
     const { statusCode, body } = res;
 
-    console.log(body);
-
     expect(statusCode).toBe(400);
   });
 });

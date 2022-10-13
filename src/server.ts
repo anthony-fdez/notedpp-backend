@@ -9,11 +9,14 @@ export const server = app.listen(PORT, async () => {
   try {
     await prisma.$connect();
 
-    console.log(`PORT: ${PORT}`);
+    logger.log({
+      level: "info",
+      message: `App running on port: ${PORT}`,
+    });
   } catch (error: any) {
     logger.log({
       level: "error",
-      message: `Unable to connect with db`,
+      message: "Unable to connect with db",
       error,
       service: "server",
     });
