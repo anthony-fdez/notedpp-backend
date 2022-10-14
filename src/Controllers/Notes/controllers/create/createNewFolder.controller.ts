@@ -30,7 +30,7 @@ export const createNewFolderController = router.post(
         .json({ status: "error", message: "Missing fields" });
     }
 
-    const folder = await getFolderByName({ folder_name });
+    const folder = await getFolderByName({ folder_name, user_id });
 
     if (folder) {
       return res

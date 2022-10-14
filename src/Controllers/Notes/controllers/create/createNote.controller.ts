@@ -35,6 +35,7 @@ export const createNewNoteController = router.post(
     if (!folder_name) {
       const quickNotesFolder = await getFolderByName({
         folder_name: "Quick Notes",
+        user_id,
       });
 
       if (!quickNotesFolder) {
@@ -54,7 +55,7 @@ export const createNewNoteController = router.post(
       }
     }
 
-    const folderExist = await getFolderByName({ folder_name });
+    const folderExist = await getFolderByName({ folder_name, user_id });
 
     if (!folderExist) {
       return await createFolderAndNote({

@@ -28,7 +28,7 @@ export const getNotesInFolderController = router.get(
       });
     }
 
-    const folder = await getFolderByName({ folder_name });
+    const folder = await getFolderByName({ folder_name, user_id });
 
     if (!folder) {
       return res.status(400).json({

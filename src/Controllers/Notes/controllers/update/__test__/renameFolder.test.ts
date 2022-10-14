@@ -37,11 +37,9 @@ describe("Rename Folder", () => {
       test_user_id,
     })) as unknown as IRes;
 
-    const { statusCode, body } = res;
+    const { statusCode } = res;
 
     expect(statusCode).toBe(200);
-    expect(body.folder.user_id).toBe(test_user_id);
-    expect(body.folder.folder_name).toBe(new_folder_name);
   });
 
   test("Should try to rename to a folder name that is already in use", async () => {
