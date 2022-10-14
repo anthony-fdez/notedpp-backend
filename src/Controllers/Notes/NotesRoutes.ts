@@ -1,3 +1,4 @@
+import { getNoteController } from "./controllers/read/getNote.controller";
 import express from "express";
 
 import { deleteNoteController } from "./controllers/delete/deleteNote.controller";
@@ -25,5 +26,6 @@ NotesRoutes.use("/notes", renameFolderController);
 NotesRoutes.use("/notes", editNoteController);
 NotesRoutes.use("/notes", deleteNoteHistoryController);
 NotesRoutes.use("/notes", getNoteHistoryController);
+NotesRoutes.use("/notes", getNoteController);
 
 export default NotesRoutes;
