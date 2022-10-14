@@ -30,6 +30,13 @@ export const getNoteController = router.get(
 
     const note = await getNote({ note_id });
 
+    if (!note) {
+      return res.status(400).json({
+        status: "error",
+        message: "Note does not exist",
+      });
+    }
+
     return res.status(200).json({ status: "OK", note });
   })
 );
