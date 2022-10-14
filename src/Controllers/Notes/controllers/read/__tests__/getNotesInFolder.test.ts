@@ -71,7 +71,7 @@ describe("Get notes in a folder", () => {
   });
 
   test("Should delete the folder", async () => {
-    const res: IRes = (await request.delete("/notes/delete-folder").send({
+    const res: IRes = (await request.post("/notes/delete-folder").send({
       folder_name,
       test_user_id,
     })) as unknown as IRes;

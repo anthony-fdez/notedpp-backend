@@ -19,7 +19,7 @@ describe("New Folder", () => {
   let createdFolderId: string;
 
   test("Should delete folder if exists", async () => {
-    const res: IRes = (await request.delete("/notes/delete-folder").send({
+    const res: IRes = (await request.post("/notes/delete-folder").send({
       folder_name,
       test_user_id,
     })) as unknown as IRes;
@@ -59,7 +59,7 @@ describe("New Folder", () => {
   });
 
   test("Should delete created folder", async () => {
-    const res: IRes = (await request.delete("/notes/delete-folder").send({
+    const res: IRes = (await request.post("/notes/delete-folder").send({
       folder_name,
       test_user_id,
     })) as unknown as IRes;
