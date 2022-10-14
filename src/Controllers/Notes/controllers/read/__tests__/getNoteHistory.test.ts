@@ -85,7 +85,7 @@ describe("Get note history", () => {
   });
 
   test("Delete edited note", async () => {
-    const res: IRes = (await request.delete("/notes/delete-note").send({
+    const res: IRes = (await request.post("/notes/delete-note").send({
       note_id: createdNoteId,
       test_user_id,
     })) as unknown as IRes;

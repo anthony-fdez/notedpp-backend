@@ -6,7 +6,7 @@ import { deleteNoteHistory } from "../../utils/services/notes.services";
 
 const router: Router = express.Router();
 
-export const deleteNoteHistoryController = router.delete(
+export const deleteNoteHistoryController = router.post(
   "/delete-note-history",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
