@@ -33,7 +33,7 @@ describe("Delete Folder", () => {
   });
 
   test("Should delete the folder", async () => {
-    const res: IRes = (await request.delete("/notes/delete-folder").send({
+    const res: IRes = (await request.post("/notes/delete-folder").send({
       folder_name,
       test_user_id,
     })) as unknown as IRes;
@@ -45,7 +45,7 @@ describe("Delete Folder", () => {
   });
 
   test("Should try delete a folder that does not exist", async () => {
-    const res: IRes = (await request.delete("/notes/delete-folder").send({
+    const res: IRes = (await request.post("/notes/delete-folder").send({
       folder_name,
       test_user_id,
     })) as unknown as IRes;

@@ -1,13 +1,13 @@
-import { getNote } from "./../../utils/services/read/getNote.service";
+import { getFolderByName } from "./../../utils/services/read/getFolderByName.service";
 import express, { Request, Response, Router } from "express";
 import catchAsync from "../../../../utils/middleware/catchAsync";
 import checkJWT from "../../../../utils/middleware/checkJWT";
-import { deleteNoteHistory } from "../../utils/services/notes.services";
+import { getNote, getNotesInFolder } from "../../utils/services/notes.services";
 
 const router: Router = express.Router();
 
-export const deleteNoteHistoryController = router.post(
-  "/delete-note-history",
+export const getNoteController = router.get(
+  "/get-note",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
     let user_id = req.auth?.payload.sub;
@@ -24,7 +24,7 @@ export const deleteNoteHistoryController = router.post(
     if (!note_id) {
       return res.status(400).json({
         status: "error",
-        message: "Missing fields",
+        message: "'folder_name' is required",
       });
     }
 
@@ -37,12 +37,6 @@ export const deleteNoteHistoryController = router.post(
       });
     }
 
-    const deletedNotesHistory = await deleteNoteHistory({ note_id });
-
-    return res.status(200).send({
-      status: "OK",
-      message: "History archive deleted",
-      deletedNotesHistory,
-    });
+    return res.status(200).json({ status: "OK", note });
   })
 );

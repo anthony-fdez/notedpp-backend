@@ -37,7 +37,7 @@ describe("Delete Notes", () => {
   });
 
   test("Should delete the note", async () => {
-    const res: IRes = (await request.delete("/notes/delete-note").send({
+    const res: IRes = (await request.post("/notes/delete-note").send({
       note_id: newlyCreatedNoteId,
     })) as unknown as IRes;
 
@@ -50,7 +50,7 @@ describe("Delete Notes", () => {
   });
 
   test("Should try to delete a note that does not exist", async () => {
-    const res: IRes = (await request.delete("/notes/delete-note").send({
+    const res: IRes = (await request.post("/notes/delete-note").send({
       note_id: "fake id",
     })) as unknown as IRes;
 

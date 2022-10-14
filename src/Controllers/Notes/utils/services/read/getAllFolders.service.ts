@@ -11,7 +11,7 @@ export const getAllFolders = async ({ user_id }: Props): Promise<Folder[]> => {
       user_id,
     },
     include: {
-      _count: true,
+      notes: true,
     },
   });
 

@@ -9,7 +9,7 @@ import {
 
 const router: Router = express.Router();
 
-export const deleteNoteController = router.delete(
+export const deleteNoteController = router.post(
   "/delete-note",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {

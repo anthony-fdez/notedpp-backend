@@ -11,7 +11,7 @@ import {
 
 const router: Router = express.Router();
 
-export const deleteFolderController = router.delete(
+export const deleteFolderController = router.post(
   "/delete-folder",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {

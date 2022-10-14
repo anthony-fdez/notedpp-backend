@@ -62,7 +62,7 @@ describe("Get notes in a folder", () => {
   });
 
   test("Should delete folder 1", async () => {
-    const res: IRes = (await request.delete("/notes/delete-folder").send({
+    const res: IRes = (await request.post("/notes/delete-folder").send({
       folder_name: folder_name_1,
       test_user_id,
     })) as unknown as IRes;
@@ -73,7 +73,7 @@ describe("Get notes in a folder", () => {
   });
 
   test("Should delete folder 2", async () => {
-    const res: IRes = (await request.delete("/notes/delete-folder").send({
+    const res: IRes = (await request.post("/notes/delete-folder").send({
       folder_name: folder_name_2,
       test_user_id,
     })) as unknown as IRes;
