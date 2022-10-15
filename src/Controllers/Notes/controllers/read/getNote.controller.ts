@@ -1,8 +1,7 @@
-import { getFolderByName } from "./../../utils/services/read/getFolderByName.service";
 import express, { Request, Response, Router } from "express";
 import catchAsync from "../../../../utils/middleware/catchAsync";
 import checkJWT from "../../../../utils/middleware/checkJWT";
-import { getNote, getNotesInFolder } from "../../utils/services/notes.services";
+import { getNote } from "../../utils/services/notes.services";
 
 const router: Router = express.Router();
 

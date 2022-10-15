@@ -4,17 +4,20 @@ import { prisma } from "../../../../../../prisma/prisma-client";
 interface Props {
   folder_name: string;
   new_folder_name: string;
+  user_id: string;
   res: Response;
 }
 
 export const renameFolder = async ({
   folder_name,
   new_folder_name,
+  user_id,
   res,
 }: Props) => {
-  const updatedFolder = await prisma.folder.update({
+  const updatedFolder = await prisma.folder.updateMany({
     where: {
-      folder_name,
+      user_id,
+      folder_name: folder_name,
     },
     data: {
       folder_name: new_folder_name,

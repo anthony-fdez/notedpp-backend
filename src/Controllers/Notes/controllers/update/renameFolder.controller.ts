@@ -31,7 +31,7 @@ export const renameFolderController = router.patch(
       });
     }
 
-    const folder = await getFolderByName({ folder_name });
+    const folder = await getFolderByName({ folder_name, user_id });
 
     if (!folder) {
       return res.status(400).json({
@@ -42,6 +42,7 @@ export const renameFolderController = router.patch(
 
     const isNewNameAvailable = await getFolderByName({
       folder_name: new_folder_name,
+      user_id,
     });
 
     if (isNewNameAvailable) {
@@ -51,6 +52,6 @@ export const renameFolderController = router.patch(
       });
     }
 
-    await renameFolder({ new_folder_name, folder_name, res });
+    await renameFolder({ new_folder_name, folder_name, user_id, res });
   })
 );

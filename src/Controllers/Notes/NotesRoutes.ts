@@ -1,4 +1,3 @@
-import { getNoteController } from "./controllers/read/getNote.controller";
 import express from "express";
 
 import { deleteNoteController } from "./controllers/delete/deleteNote.controller";
@@ -12,6 +11,8 @@ import { renameFolderController } from "./controllers/update/renameFolder.contro
 import { editNoteController } from "./controllers/update/editNote.controller";
 import { deleteNoteHistoryController } from "./controllers/delete/deleteNoteHistory.controller";
 import { getNoteHistoryController } from "./controllers/read/getNoteHistory.controller";
+import { moveNoteToAnotherFolderController } from "./controllers/update/moveNoteToOtherFolder.controller";
+import { getNoteController } from "./controllers/read/getNote.controller";
 
 const NotesRoutes = express.Router();
 
@@ -27,5 +28,6 @@ NotesRoutes.use("/notes", editNoteController);
 NotesRoutes.use("/notes", deleteNoteHistoryController);
 NotesRoutes.use("/notes", getNoteHistoryController);
 NotesRoutes.use("/notes", getNoteController);
+NotesRoutes.use("/notes", moveNoteToAnotherFolderController);
 
 export default NotesRoutes;

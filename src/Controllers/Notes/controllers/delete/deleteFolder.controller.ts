@@ -15,7 +15,10 @@ export const deleteFolderController = router.post(
   "/delete-folder",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
-    const { folder_id, folder_name } = req.body;
+    let user_id = req.auth?.payload.sub;
+
+    const { folder_id, folder_name, test_user_id } = req.body;
+    if (test_user_id) user_id = test_user_id;
 
     if (!folder_id && !folder_name) {
       return res.status(400).json({
@@ -24,10 +27,17 @@ export const deleteFolderController = router.post(
       });
     }
 
+    if (!user_id) {
+      return res.status(401).json({
+        status: "error",
+        message: "Unauthorized",
+      });
+    }
+
     let new_folder_id = folder_id;
 
     if (folder_name) {
-      const folder: Folder = await getFolderByName({ folder_name });
+      const folder: Folder = await getFolderByName({ folder_name, user_id });
 
       if (folder) {
         new_folder_id = folder.id;
