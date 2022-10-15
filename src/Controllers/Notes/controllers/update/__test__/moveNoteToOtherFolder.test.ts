@@ -63,8 +63,6 @@ describe("Move note to other folder", () => {
 
     const { statusCode, body } = res;
 
-    console.log(body);
-
     expect(statusCode).toBe(200);
     expect(body.note.user_id).toBe(test_user_id);
     expect(body.note.id).toBe(createdNoteId);
