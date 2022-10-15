@@ -57,8 +57,6 @@ describe("New note", () => {
 
     const { statusCode, body } = res;
 
-    console.log(body);
-
     expect(statusCode).toBe(200);
     expect(body.note.note).toBe(note2);
     expect(body.note.user_id).toBe(test_user_id);
