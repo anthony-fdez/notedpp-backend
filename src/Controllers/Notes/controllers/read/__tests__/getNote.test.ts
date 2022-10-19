@@ -37,7 +37,7 @@ describe("Get note history", () => {
   });
 
   test("Should get the note", async () => {
-    const res: IRes = (await request.get("/notes/get-note").send({
+    const res: IRes = (await request.post("/notes/get-note").send({
       note_id: createdNoteId,
       test_user_id,
     })) as unknown as IRes;
