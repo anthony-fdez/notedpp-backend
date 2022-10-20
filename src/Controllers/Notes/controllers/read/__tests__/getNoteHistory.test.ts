@@ -72,7 +72,7 @@ describe("Get note history", () => {
     }
 
     const res: IResNoteHistory = (await request
-      .get("/notes/get-note-history")
+      .post("/notes/get-note-history")
       .send({
         note_id: createdNoteId,
         test_user_id,

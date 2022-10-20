@@ -44,7 +44,7 @@ export const editNoteController = router.patch(
 
     await createNoteArchive({
       note_id,
-      note: sanitize(oldNote.note),
+      note: sanitize(new_note),
       folderId: oldNote.folderId,
       user_id: oldNote.user_id,
     });

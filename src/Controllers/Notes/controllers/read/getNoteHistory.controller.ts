@@ -5,7 +5,7 @@ import { getNote, getNoteHistory } from "../../utils/services/notes.services";
 
 const router: Router = express.Router();
 
-export const getNoteHistoryController = router.get(
+export const getNoteHistoryController = router.post(
   "/get-note-history",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
