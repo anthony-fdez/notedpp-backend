@@ -1,4 +1,5 @@
 import express, { Request, Response, Router } from "express";
+import sanitize from "sanitize-html";
 import catchAsync from "../../../../utils/middleware/catchAsync";
 import checkJWT from "../../../../utils/middleware/checkJWT";
 import {
@@ -41,14 +42,14 @@ export const createNewNoteController = router.post(
       if (!quickNotesFolder) {
         return await createFolderAndNote({
           folder_name: "Quick Notes",
-          note,
+          note: sanitize(note),
           user_id,
           res,
         });
       } else {
         return await createNote({
           user_id,
-          note,
+          note: sanitize(note),
           folderId: quickNotesFolder.id,
           res,
         });
@@ -61,14 +62,14 @@ export const createNewNoteController = router.post(
       return await createFolderAndNote({
         folder_name,
         user_id,
-        note,
+        note: sanitize(note),
         res,
       });
     }
 
     return await createNote({
       user_id,
-      note,
+      note: sanitize(note),
       folderId: folderExist.id,
       res,
     });

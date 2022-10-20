@@ -6,6 +6,7 @@ import {
   createNoteArchive,
   editNote,
 } from "../../utils/services/notes.services";
+import sanitize from "sanitize-html";
 
 const router: Router = express.Router();
 
@@ -43,12 +44,15 @@ export const editNoteController = router.patch(
 
     await createNoteArchive({
       note_id,
-      note: oldNote.note,
+      note: sanitize(new_note),
       folderId: oldNote.folderId,
       user_id: oldNote.user_id,
     });
 
-    const editedNote = await editNote({ new_note, note_id });
+    const editedNote = await editNote({
+      new_note: sanitize(new_note),
+      note_id,
+    });
 
     res.status(200).send({
       status: "OK",
