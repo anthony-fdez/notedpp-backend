@@ -5,7 +5,7 @@ import { getNote } from "../../utils/services/notes.services";
 
 const router: Router = express.Router();
 
-export const getNoteController = router.get(
+export const getNoteController = router.post(
   "/get-note",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
@@ -23,7 +23,7 @@ export const getNoteController = router.get(
     if (!note_id) {
       return res.status(400).json({
         status: "error",
-        message: "'folder_name' is required",
+        message: "'note_id' is required",
       });
     }
 

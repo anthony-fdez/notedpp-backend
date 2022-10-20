@@ -37,7 +37,7 @@ export const editNoteController = router.patch(
     if (!oldNote) {
       return res.status(400).json({
         status: "error",
-        message: "There was an error getting the note to edi.",
+        message: "There was an error getting the note to edit.",
       });
     }
 
