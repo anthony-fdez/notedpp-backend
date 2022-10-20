@@ -22,6 +22,7 @@
     "lint-staged": "^13.0.3",
     "moment": "^2.29.3",
     "random-email": "^1.0.3",
+    "sanitize-html": "^2.7.2",
     "validator": "^13.7.0",
     "winston": "^3.8.2"
   },
@@ -34,6 +35,7 @@
     "@types/jest": "^28.1.8",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^18.8.3",
+    "@types/sanitize-html": "^2.6.2",
     "@types/sequelize": "^4.28.13",
     "@types/supertest": "^2.0.12",
     "@types/validator": "^13.7.3",
