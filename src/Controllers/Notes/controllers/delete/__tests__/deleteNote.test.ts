@@ -15,7 +15,7 @@ interface IRes {
 }
 
 describe("Delete Notes", () => {
-  const test_user_id = "TEST_USER";
+  const test_user_id = "TEST_USER_DELETE_NOTE";
   const folder_name = "TEST";
   const note = "NEW NOTE";
   let newlyCreatedNoteId: string;
@@ -39,6 +39,7 @@ describe("Delete Notes", () => {
   test("Should delete the note", async () => {
     const res: IRes = (await request.post("/notes/delete-note").send({
       note_id: newlyCreatedNoteId,
+      test_user_id,
     })) as unknown as IRes;
 
     const { statusCode, body } = res;
@@ -52,6 +53,7 @@ describe("Delete Notes", () => {
   test("Should try to delete a note that does not exist", async () => {
     const res: IRes = (await request.post("/notes/delete-note").send({
       note_id: "fake id",
+      test_user_id,
     })) as unknown as IRes;
 
     const { statusCode } = res;

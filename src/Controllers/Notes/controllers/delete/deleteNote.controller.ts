@@ -13,7 +13,10 @@ export const deleteNoteController = router.post(
   "/delete-note",
   checkJWT,
   catchAsync(async (req: Request, res: Response) => {
-    const { note_id } = req.body;
+    let user_id = req.auth?.payload.sub;
+
+    const { note_id, test_user_id } = req.body;
+    if (test_user_id) user_id = test_user_id;
 
     if (!note_id) {
       return res.status(400).json({
@@ -22,7 +25,17 @@ export const deleteNoteController = router.post(
       });
     }
 
-    const note = await getNote({ note_id });
+    if (!user_id) {
+      return res.status(401).json({
+        status: "error",
+        message: "Unauthorized",
+      });
+    }
+
+    const note = await getNote({
+      note_id,
+      user_id,
+    });
 
     if (!note) {
       return res.status(400).json({

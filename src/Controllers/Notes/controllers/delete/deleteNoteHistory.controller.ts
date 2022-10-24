@@ -28,7 +28,7 @@ export const deleteNoteHistoryController = router.post(
       });
     }
 
-    const note = await getNote({ note_id });
+    const note = await getNote({ note_id, user_id });
 
     if (!note) {
       return res.status(400).json({

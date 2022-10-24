@@ -5,18 +5,15 @@ import { getNote } from "../../utils/services/notes.services";
 
 const router: Router = express.Router();
 
-export const getNoteController = router.post(
-  "/get-note",
-  checkJWT,
+export const getNoteSharedController = router.post(
+  "/get-note-shared",
   catchAsync(async (req: Request, res: Response) => {
-    let user_id = req.auth?.payload.sub;
-    const { test_user_id, note_id } = req.body;
-    if (test_user_id) user_id = test_user_id;
+    const { user_id, note_id } = req.body;
 
     if (!user_id) {
       return res.status(401).json({
         status: "error",
-        message: "Unauthorized",
+        message: "'user_id' is required.",
       });
     }
 

@@ -14,10 +14,11 @@ interface IRes {
 }
 
 describe("New note", () => {
-  const test_user_id = "TEST_USER";
+  const test_user_id = "TEST_USER_CREATE_NOTE";
   const folder_name = "TEST";
   const note = "TEST NOTE";
   let newlyCreatedNoteId: string;
+
   test("Should create a new note", async () => {
     const res: IRes = (await request.post("/notes/new-note").send({
       folder_name,
@@ -49,6 +50,7 @@ describe("New note", () => {
   test("Delete Note", async () => {
     const res: IRes = (await request.post("/notes/delete-note").send({
       note_id: newlyCreatedNoteId,
+      test_user_id,
     })) as unknown as IRes;
 
     const { statusCode, body } = res;
