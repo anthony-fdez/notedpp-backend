@@ -6,7 +6,6 @@ import {
   createNoteArchive,
   editNote,
 } from "../../utils/services/notes.services";
-import sanitize from "sanitize-html";
 
 const router: Router = express.Router();
 
@@ -33,7 +32,7 @@ export const editNoteController = router.patch(
       });
     }
 
-    const oldNote = await getNote({ note_id });
+    const oldNote = await getNote({ note_id, user_id });
 
     if (!oldNote) {
       return res.status(400).json({
@@ -44,13 +43,13 @@ export const editNoteController = router.patch(
 
     await createNoteArchive({
       note_id,
-      note: sanitize(new_note),
+      note: new_note,
       folderId: oldNote.folderId,
       user_id: oldNote.user_id,
     });
 
     const editedNote = await editNote({
-      new_note: sanitize(new_note),
+      new_note: new_note,
       note_id,
     });
 

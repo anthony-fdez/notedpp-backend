@@ -42,14 +42,14 @@ export const createNewNoteController = router.post(
       if (!quickNotesFolder) {
         return await createFolderAndNote({
           folder_name: "Quick Notes",
-          note: sanitize(note),
+          note: note,
           user_id,
           res,
         });
       } else {
         return await createNote({
           user_id,
-          note: sanitize(note),
+          note: note,
           folderId: quickNotesFolder.id,
           res,
         });
@@ -62,14 +62,14 @@ export const createNewNoteController = router.post(
       return await createFolderAndNote({
         folder_name,
         user_id,
-        note: sanitize(note),
+        note: note,
         res,
       });
     }
 
     return await createNote({
       user_id,
-      note: sanitize(note),
+      note: note,
       folderId: folderExist.id,
       res,
     });

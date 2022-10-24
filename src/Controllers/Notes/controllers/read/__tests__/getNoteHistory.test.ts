@@ -14,7 +14,7 @@ interface IRes {
 }
 
 describe("Get note history", () => {
-  const test_user_id = "TEST_USER_EDIT_NOTE";
+  const test_user_id = "TEST_USER_GET_NOTE_HISTORY_NOTE";
   const folder_name = "TEST_FOLDER_EDIT_NOTE";
   const note1 = "note 1";
   const note2 = "note 2";
