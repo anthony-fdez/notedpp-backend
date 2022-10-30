@@ -1,13 +1,25 @@
 import { logger } from "./logger/logger";
 import app from "./app";
+import http from "http";
+import { Server } from "socket.io";
 
 import { prisma } from "../prisma/prisma-client";
 
 const PORT = process.env.PORT || 3001;
+const server = http.createServer(app);
+export const io = new Server(server, {
+  cors: {
+    origin: "*",
+  },
+});
 
-export const server = app.listen(PORT, async () => {
+require("./chat/chat");
+
+server.listen(PORT, async () => {
   try {
     await prisma.$connect();
+
+    require("./chat/chat");
 
     logger.log({
       level: "info",

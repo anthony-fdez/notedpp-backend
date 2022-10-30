@@ -9,8 +9,6 @@ import rateLimit from "express-rate-limit";
 import NotesRoutes from "./Controllers/Notes/NotesRoutes";
 import error from "./utils/middleware/errors";
 
-const app = express();
-
 const limiter = rateLimit({
   windowMs: 1 * 60 * 1000, // 1 minute
   max: 50, // Limit each IP to 20 requests per `window` (here, per 1 minute)
@@ -23,11 +21,12 @@ const limiter = rateLimit({
   },
 });
 
+const app = express();
+
 app.use(cors());
 app.use(urlencoded({ extended: true }));
 app.use(express.json());
 app.use(limiter);
-
 app.use(NotesRoutes);
 app.use(error);
 
