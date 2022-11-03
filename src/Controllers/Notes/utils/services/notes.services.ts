@@ -15,6 +15,7 @@ import { createNoteArchive } from "./create/createNoteArchive.service";
 import { deleteNoteHistory } from "./delete/deleteNoteHistory.service";
 import { getNoteHistory } from "./read/getNoteHistory.service";
 import { moveNoteToAnotherFolder } from "./update/moveNoteToOtherFolder.service";
+import { deleteAllTests } from "./delete/deleteAllTests.service";
 
 export {
   // Create
@@ -28,6 +29,7 @@ export {
   deleteNote,
   deleteAllFolders,
   deleteNoteHistory,
+  deleteAllTests,
   // Read
   getAllFolders,
   getFolderByName,

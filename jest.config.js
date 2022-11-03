@@ -9,4 +9,5 @@ module.exports = {
   clearMocks: true,
   resetMocks: true,
   restoreMocks: true,
+  globalTeardown: "./teardownJest.ts",
 };
