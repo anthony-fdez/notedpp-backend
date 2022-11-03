@@ -23,6 +23,7 @@ model Note {
   id            String        @id @default(auto()) @map("_id") @db.ObjectId
   user_id       String        @unique
   note          String
+  status        String        @default("note") // 'note' | 'not_started' | 'working' | 'done'
   folderId      String        @db.ObjectId
   folder        Folder        @relation(fields: [folderId], references: [id])
   createdAt     DateTime      @default(now())
